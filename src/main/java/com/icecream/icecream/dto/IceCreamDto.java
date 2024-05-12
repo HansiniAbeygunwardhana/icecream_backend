@@ -1,30 +1,35 @@
-package com.icecream.icecream.model;
+package com.icecream.icecream.dto;
 
-import jakarta.persistence.*;
+import com.icecream.icecream.model.Flavour;
 
-@Entity
-@Table(name = "ice_cream")
-public class IceCream {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class IceCreamDto {
+
     private Integer iceCreamId;
 
-    @Column(name = "ice_cream_name")
     private String iceCreamName;
-    @Column(name = "ice_cream_descript")
+
+    private Integer flavour;
+
     private String iceCreamDescription;
-    @Column(name = "rating")
+
     private Double rating;
-    @Column(name = "price")
+
     private Double price;
-    @Column(name = "quantity")
+
     private Long quantity;
-    @Column(name = "img_url")
+
     private String imgUrl;
 
-    @ManyToOne
-    @JoinColumn(name = "flavour_id")
-    Flavour flavour;
+    public IceCreamDto(Integer iceCreamId, String iceCreamName, Integer flavour, String iceCreamDescription, Double rating, Double price, Long quantity, String imgUrl) {
+        this.iceCreamId = iceCreamId;
+        this.iceCreamName = iceCreamName;
+        this.flavour = flavour;
+        this.iceCreamDescription = iceCreamDescription;
+        this.rating = rating;
+        this.price = price;
+        this.quantity = quantity;
+        this.imgUrl = imgUrl;
+    }
 
     public Integer getIceCreamId() {
         return iceCreamId;
@@ -42,12 +47,20 @@ public class IceCream {
         this.iceCreamName = iceCreamName;
     }
 
+    public Integer getFlavour() {
+        return flavour;
+    }
+
+    public void setFlavourType(Integer flavour) {
+        this.flavour = flavour;
+    }
+
     public String getIceCreamDescription() {
         return iceCreamDescription;
     }
 
-    public void setIceCreamDescription(String icecreamDescription) {
-        this.iceCreamDescription = icecreamDescription;
+    public void setIceCreamDescription(String iceCreamDescription) {
+        this.iceCreamDescription = iceCreamDescription;
     }
 
     public Double getRating() {
@@ -66,14 +79,6 @@ public class IceCream {
         this.price = price;
     }
 
-    public Flavour getFlavour() {
-        return flavour;
-    }
-
-    public void setFlavour(Flavour flavour) {
-        this.flavour = flavour;
-    }
-
     public Long getQuantity() {
         return quantity;
     }
@@ -89,5 +94,4 @@ public class IceCream {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
-
 }

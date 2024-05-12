@@ -1,5 +1,6 @@
 HELP.md
 target/
+ice-cream-ben-n-jerry-cc6f91f5ebcb.json
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
