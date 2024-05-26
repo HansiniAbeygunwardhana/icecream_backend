@@ -29,4 +29,16 @@ public class FileController {
         return ResponseEntity.ok("file uploaded successfully");
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<String> updateFile(@RequestParam MultipartFile file, String fileName)throws IOException{
+        fileService.updateFile(file,fileName);
+        return ResponseEntity.ok("file updated successfully");
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteFile(@RequestParam String fileName){
+        fileService.deleteFile(fileName);
+        return ResponseEntity.ok("File deleted successfully");
+    }
+
 }

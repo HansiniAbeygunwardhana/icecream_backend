@@ -22,6 +22,15 @@ public class IceCream {
     @Column(name = "img_url")
     private String imgUrl;
 
+    @Column(name = "img_name")
+    private String imgName;
+
+    @Column(name = "allegerns")
+    private String allergerns;
+
+    @Column(name = "ingredients")
+    private String ingredients;
+
     @ManyToOne
     @JoinColumn(name = "flavour_id")
     Flavour flavour;
@@ -90,4 +99,27 @@ public class IceCream {
         this.imgUrl = imgUrl;
     }
 
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+
+    public String getAllergerns() {
+        return allergerns;
+    }
+
+    public void setAllergerns(String allergerns) {
+        this.allergerns = allergerns;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
 }

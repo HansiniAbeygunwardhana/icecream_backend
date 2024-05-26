@@ -2,6 +2,7 @@ package com.icecream.icecream.service;
 
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
+import com.icecream.icecream.model.FileDetail;
 import org.springframework.beans.factory.annotation.Value;
 import com.google.api.gax.paging.Page;
 import com.google.cloud.storage.Blob;
@@ -33,16 +34,29 @@ public class FileService {
         return list;
     }
 
-    public String uploadFile(MultipartFile file) throws IOException {
+    public FileDetail uploadFile(MultipartFile file) throws IOException {
         if (file != null && !file.isEmpty()){
             BlobId blobId = BlobId.of(bucketName, file.getOriginalFilename());
             BlobInfo blobInfo = BlobInfo.newBuilder(blobId).
                     setContentType(file.getContentType()).build();
             Blob blob = storage.create(blobInfo,file.getBytes());
-            return blob.getMediaLink();
+//            return blob.getMediaLink();
+            return new FileDetail(blob.getMediaLink(), blob.getName());
         }
         else {
             return null;
         }
+    }
+
+    public boolean deleteFile(String fileName){
+        System.out.println(fileName);
+        Blob blob = storage.get(bucketName, fileName);
+        return blob.delete();
+    }
+
+    public FileDetail updateFile(MultipartFile file, String fileName) throws IOException{
+        deleteFile(fileName);
+
+        return uploadFile(file);
     }
 }

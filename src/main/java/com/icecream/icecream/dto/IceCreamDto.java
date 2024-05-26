@@ -20,7 +20,13 @@ public class IceCreamDto {
 
     private String imgUrl;
 
-    public IceCreamDto(Integer iceCreamId, String iceCreamName, Integer flavour, String iceCreamDescription, Double rating, Double price, Long quantity, String imgUrl) {
+    private String imgName;
+
+    private String allegerns;
+
+    private String ingredients;
+
+    public IceCreamDto(Integer iceCreamId, String iceCreamName, Integer flavour, String iceCreamDescription, Double rating, Double price, Long quantity, String imgUrl, String imgName, String allegerns, String ingredients) {
         this.iceCreamId = iceCreamId;
         this.iceCreamName = iceCreamName;
         this.flavour = flavour;
@@ -29,6 +35,9 @@ public class IceCreamDto {
         this.price = price;
         this.quantity = quantity;
         this.imgUrl = imgUrl;
+        this.imgName = imgName;
+        this.allegerns = allegerns;
+        this.ingredients = ingredients;
     }
 
     public Integer getIceCreamId() {
@@ -93,5 +102,29 @@ public class IceCreamDto {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+
+    public String getAllegerns() {
+        return allegerns;
+    }
+
+    public void setAllegerns(String allegerns) {
+        this.allegerns = allegerns;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
     }
 }
